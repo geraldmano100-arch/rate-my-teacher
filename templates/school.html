@@ -1,0 +1,163 @@
+{% extends "base.html" %}
+
+{% block title %}{{ school['name'] }} — Rate the Teach{% endblock %}
+
+{% block content %}
+
+<section class="school-page">
+
+  <a class="back-link" href="{{ url_for('home') }}#schools">
+    ← Back to schools
+  </a>
+
+  <div class="school-page-header">
+
+    <p class="section-kicker">
+      {{ school['school_type'] }}
+    </p>
+
+    <h1>{{ school['name'] }}</h1>
+
+    {% if school['school_number'] %}
+      <p class="school-number-large">
+        School #{{ school['school_number'] }}
+      </p>
+    {% endif %}
+
+  </div>
+
+
+  <!-- SEARCH TEACHERS -->
+
+  <div class="teacher-search-wrap">
+
+    <form class="school-search" method="GET">
+
+      <input
+        type="search"
+        name="q"
+        value="{{ query }}"
+        placeholder="Search teacher name or subject..."
+        aria-label="Search teachers"
+        autocomplete="off"
+      >
+
+      <button type="submit">
+        Search
+      </button>
+
+    </form>
+
+  </div>
+
+
+  <!-- RESULTS HEADER -->
+
+  <div class="results-heading">
+
+    <p>
+      {% if query %}
+
+        Teachers matching
+        <strong>"{{ query }}"</strong>
+
+      {% else %}
+
+        Teachers at this school
+
+      {% endif %}
+    </p>
+
+    <span>
+      {{ teachers|length }}
+      teacher{% if teachers|length != 1 %}s{% endif %}
+    </span>
+
+  </div>
+
+
+  <!-- TEACHER CARDS -->
+
+  {% if teachers %}
+
+    <div class="teacher-grid">
+
+      {% for teacher in teachers %}
+
+        <a
+          class="teacher-card"
+          href="{{ url_for('teacher_detail', teacher_id=teacher['id']) }}"
+        >
+
+          <!-- GRADE -->
+
+          <div class="grade-stamp grade-{{ teacher['letter_grade'] }}">
+            {{ teacher['letter_grade'] }}
+          </div>
+
+
+          <!-- TEACHER -->
+
+          <h3 class="teacher-name">
+            {{ teacher['name'] }}
+          </h3>
+
+          <p class="teacher-subject">
+            {{ teacher['subject'] }}
+          </p>
+
+
+          <!-- REVIEW INFO -->
+
+          {% if teacher['review_count'] %}
+
+            <p class="teacher-meta">
+
+              {{ teacher['avg_overall'] }}/5
+
+              ·
+
+              {{ teacher['review_count'] }}
+              review{% if teacher['review_count'] != 1 %}s{% endif %}
+
+            </p>
+
+          {% else %}
+
+            <p class="teacher-meta">
+              No reviews yet
+            </p>
+
+          {% endif %}
+
+        </a>
+
+      {% endfor %}
+
+    </div>
+
+  {% else %}
+
+    <!-- NO TEACHERS -->
+
+    <div class="empty-state">
+
+      <h3>
+        No teachers listed yet.
+      </h3>
+
+      <p>
+        Be the first to add a teacher from this school.
+      </p>
+
+      <a href="{{ url_for('add_teacher') }}">
+        Add a teacher
+      </a>
+
+    </div>
+
+  {% endif %}
+
+</section>
+
+{% endblock %}

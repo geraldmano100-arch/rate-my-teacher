@@ -1,0 +1,263 @@
+{% extends "base.html" %}
+
+
+{% block title %}
+Rate the Teach — Find Your School
+{% endblock %}
+
+
+{% block content %}
+
+
+<section class="landing">
+
+    <div class="landing-inner">
+
+        <p class="hero-eyebrow">
+            before you register —
+        </p>
+
+
+        <h1 class="landing-title">
+
+            Rate the Teach<span class="brand-dot">.</span>
+
+        </h1>
+
+
+        <h2 class="landing-headline">
+
+            Know the class before
+            <br>
+            you take the class.
+
+        </h2>
+
+
+        <p class="landing-sub">
+
+            Real reviews from real students.
+            Find your school, find your teacher,
+            and see what the class is really like.
+
+        </p>
+
+
+        <a
+            href="#schools"
+            class="start-button scroll-to-schools"
+        >
+
+            Find My School
+
+            <span>
+                ↓
+            </span>
+
+        </a>
+
+    </div>
+
+</section>
+
+
+
+<section
+    id="schools"
+    class="school-section"
+>
+
+
+    <div class="section-heading">
+
+        <p class="section-kicker">
+            Palm Beach County
+        </p>
+
+
+        <h2>
+            Find your school
+        </h2>
+
+
+        <p>
+
+            Choose your school first.
+            Then we'll show you the teachers
+            and reviews available there.
+
+        </p>
+
+    </div>
+
+
+
+    <form
+        class="school-search"
+        method="GET"
+        action="{{ url_for('home') }}"
+    >
+
+        <input
+            type="search"
+            name="q"
+            value="{{ query }}"
+            placeholder="Search for your school..."
+            autocomplete="off"
+        >
+
+
+        <button type="submit">
+            Search
+        </button>
+
+    </form>
+
+
+
+    <div class="school-filters">
+
+        <a
+            class="{% if not school_type %}active{% endif %}"
+            href="{{ url_for('home', q=query) }}"
+        >
+            All
+        </a>
+
+
+        <a
+            class="{% if school_type == 'Elementary' %}active{% endif %}"
+            href="{{ url_for('home', q=query, type='Elementary') }}"
+        >
+            Elementary
+        </a>
+
+
+        <a
+            class="{% if school_type == 'Middle School' %}active{% endif %}"
+            href="{{ url_for('home', q=query, type='Middle School') }}"
+        >
+            Middle
+        </a>
+
+
+        <a
+            class="{% if school_type == 'High School' %}active{% endif %}"
+            href="{{ url_for('home', q=query, type='High School') }}"
+        >
+            High School
+        </a>
+
+
+        <a
+            class="{% if school_type == 'K-8' %}active{% endif %}"
+            href="{{ url_for('home', q=query, type='K-8') }}"
+        >
+            K-8
+        </a>
+
+    </div>
+
+
+
+    <div class="results-heading">
+
+        <p>
+
+            {% if query %}
+
+                Results for
+                <strong>"{{ query }}"</strong>
+
+            {% else %}
+
+                Schools
+
+            {% endif %}
+
+        </p>
+
+
+        <span>
+            {{ schools|length }} schools
+        </span>
+
+    </div>
+
+
+
+    {% if schools %}
+
+
+        <div class="school-grid">
+
+            {% for school in schools %}
+
+
+                <a
+                    class="school-card"
+                    href="{{ url_for('school_detail', school_id=school['id']) }}"
+                >
+
+                    <div class="school-card-top">
+
+                        <span class="school-type">
+                            {{ school['school_type'] }}
+                        </span>
+
+
+                        {% if school['school_number'] %}
+
+                            <span class="school-number">
+                                #{{ school['school_number'] }}
+                            </span>
+
+                        {% endif %}
+
+                    </div>
+
+
+                    <h3>
+                        {{ school['name'] }}
+                    </h3>
+
+
+                    <span class="school-link">
+                        View teachers →
+                    </span>
+
+                </a>
+
+
+            {% endfor %}
+
+        </div>
+
+
+    {% else %}
+
+
+        <div class="empty-state">
+
+            <h3>
+                We couldn't find that school.
+            </h3>
+
+            <p>
+                Try searching with a shorter school name.
+            </p>
+
+            <a href="{{ url_for('home') }}">
+                Show all schools
+            </a>
+
+        </div>
+
+
+    {% endif %}
+
+
+</section>
+
+
+{% endblock %}

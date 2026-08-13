@@ -1,0 +1,296 @@
+{% extends "base.html" %}
+
+{% block title %}{{ teacher.name }} | Rate My Teacher{% endblock %}
+
+{% block content %}
+
+<section class="teacher-page">
+
+    <!-- Teacher header -->
+    <div class="teacher-profile-header">
+
+        <div class="teacher-profile-info">
+
+            <p class="page-label">
+                Teacher
+            </p>
+
+            <h1>{{ teacher.name }}</h1>
+
+            <p class="teacher-profile-subject">
+                {{ teacher.subject }}
+            </p>
+
+        </div>
+
+        <div class="teacher-profile-rating">
+
+            {% if stats.review_count > 0 %}
+
+                <div class="large-grade">
+                    {{ stats.letter_grade }}
+                </div>
+
+                <div class="large-rating">
+                    {{ stats.avg_overall }}/5
+                </div>
+
+                <div class="rating-count">
+                    {{ stats.review_count }}
+                    {% if stats.review_count == 1 %}
+                        review
+                    {% else %}
+                        reviews
+                    {% endif %}
+                </div>
+
+            {% else %}
+
+                <div class="no-rating-large">
+                    No reviews yet
+                </div>
+
+            {% endif %}
+
+        </div>
+
+    </div>
+
+
+    <!-- Actions -->
+    <div class="teacher-actions">
+
+        <a
+            href="{{ url_for('add_review', teacher_id=teacher.id) }}"
+            class="button button-primary"
+        >
+            Write a review
+        </a>
+
+        <a
+            href="{{ url_for('home') }}"
+            class="button button-secondary"
+        >
+            Back to teachers
+        </a>
+
+    </div>
+
+
+    {% if stats.review_count > 0 %}
+
+        <!-- Rating breakdown -->
+        <section class="rating-section">
+
+            <div class="section-heading">
+                <h2>Class ratings</h2>
+
+                <p>
+                    Average ratings based on student reviews.
+                </p>
+            </div>
+
+
+            <div class="rating-grid">
+
+                <div class="rating-box">
+                    <span class="rating-box-label">
+                        Overall
+                    </span>
+
+                    <strong>
+                        {{ stats.avg_overall }}/5
+                    </strong>
+                </div>
+
+
+                <div class="rating-box">
+                    <span class="rating-box-label">
+                        Difficulty
+                    </span>
+
+                    <strong>
+                        {{ stats.avg_difficulty }}/5
+                    </strong>
+                </div>
+
+
+                <div class="rating-box">
+                    <span class="rating-box-label">
+                        Workload
+                    </span>
+
+                    <strong>
+                        {{ stats.avg_workload }}/5
+                    </strong>
+                </div>
+
+
+                <div class="rating-box">
+                    <span class="rating-box-label">
+                        Clarity
+                    </span>
+
+                    <strong>
+                        {{ stats.avg_clarity }}/5
+                    </strong>
+                </div>
+
+
+                <div class="rating-box">
+                    <span class="rating-box-label">
+                        Test difficulty
+                    </span>
+
+                    <strong>
+                        {{ stats.avg_test_difficulty }}/5
+                    </strong>
+                </div>
+
+
+                <div class="rating-box">
+                    <span class="rating-box-label">
+                        Participation
+                    </span>
+
+                    <strong>
+                        {{ stats.avg_participation }}/5
+                    </strong>
+                </div>
+
+            </div>
+
+        </section>
+
+    {% endif %}
+
+
+    <!-- Reviews -->
+    <section class="reviews-section">
+
+        <div class="section-heading">
+
+            <h2>Student reviews</h2>
+
+            <p>
+                What students have said about this teacher.
+            </p>
+
+        </div>
+
+
+        {% if reviews %}
+
+            <div class="reviews-list">
+
+                {% for review in reviews %}
+
+                    <article class="review-card">
+
+                        <div class="review-header">
+
+                            <div>
+                                <span class="review-label">
+                                    Overall rating
+                                </span>
+
+                                <strong class="review-rating">
+                                    {{ review.overall_rating }}/5
+                                </strong>
+                            </div>
+
+                            <span class="review-date">
+                                {{ review.created_at[:10] }}
+                            </span>
+
+                        </div>
+
+
+                        <div class="review-details">
+
+                            <div>
+                                <span>Difficulty</span>
+                                <strong>
+                                    {{ review.difficulty }}/5
+                                </strong>
+                            </div>
+
+                            <div>
+                                <span>Workload</span>
+                                <strong>
+                                    {{ review.workload }}/5
+                                </strong>
+                            </div>
+
+                            <div>
+                                <span>Clarity</span>
+                                <strong>
+                                    {{ review.clarity }}/5
+                                </strong>
+                            </div>
+
+                            <div>
+                                <span>Test difficulty</span>
+                                <strong>
+                                    {{ review.test_difficulty }}/5
+                                </strong>
+                            </div>
+
+                            <div>
+                                <span>Participation</span>
+                                <strong>
+                                    {{ review.participation }}/5
+                                </strong>
+                            </div>
+
+                        </div>
+
+
+                        {% if review.comment %}
+
+                            <div class="review-comment">
+
+                                <p>
+                                    "{{ review.comment }}"
+                                </p>
+
+                            </div>
+
+                        {% endif %}
+
+                    </article>
+
+                {% endfor %}
+
+            </div>
+
+        {% else %}
+
+            <div class="empty-state">
+
+                <h3>No reviews yet</h3>
+
+                <p>
+                    Be the first student to review
+                    {{ teacher.name }}.
+                </p>
+
+                <a
+                    href="{{ url_for(
+                        'add_review',
+                        teacher_id=teacher.id
+                    ) }}"
+                    class="button button-primary"
+                >
+                    Write the first review
+                </a>
+
+            </div>
+
+        {% endif %}
+
+    </section>
+
+</section>
+
+{% endblock %}

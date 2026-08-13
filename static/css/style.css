@@ -1,0 +1,2269 @@
+/* ============================================================
+   RATE THE TEACH
+   Main Website Styles
+   ============================================================ */
+
+
+/* ============================================================
+   VARIABLES
+   ============================================================ */
+
+:root {
+
+    --green-dark: #10251e;
+    --green: #17382d;
+    --green-light: #234c3e;
+
+    --cream: #f7f2e6;
+    --cream-dark: #e8dfca;
+
+    --yellow: #e5b83d;
+    --yellow-light: #f0cf69;
+
+    --red: #b43c31;
+
+    --text-dark: #18231e;
+    --text-light: #f7f2e6;
+
+    --muted: #aabbb2;
+    --muted-dark: #6d756f;
+
+    --paper: #fffdf7;
+
+    --display-font: "Caveat", cursive;
+    --body-font: "IBM Plex Sans", sans-serif;
+    --mono-font: "IBM Plex Mono", monospace;
+}
+
+
+/* ============================================================
+   RESET
+   ============================================================ */
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+
+html {
+    scroll-behavior: smooth;
+}
+
+
+body {
+
+    min-height: 100vh;
+
+    background:
+        radial-gradient(
+            circle at top,
+            rgba(255,255,255,.035),
+            transparent 45%
+        ),
+        var(--green-dark);
+
+    color: var(--text-light);
+
+    font-family: var(--body-font);
+
+    line-height: 1.6;
+
+    overflow-x: hidden;
+}
+
+
+img {
+    max-width: 100%;
+    display: block;
+}
+
+
+button,
+input,
+textarea,
+select {
+    font-family: inherit;
+}
+
+
+button {
+    cursor: pointer;
+}
+
+
+a {
+    color: inherit;
+    text-decoration: none;
+}
+
+
+/* ============================================================
+   HEADER
+   ============================================================ */
+
+.site-header {
+
+    position: sticky;
+
+    top: 0;
+
+    z-index: 100;
+
+    width: 100%;
+
+    background:
+        rgba(16, 37, 30, .94);
+
+    border-bottom:
+        1px dashed rgba(247,242,230,.22);
+
+    backdrop-filter: blur(12px);
+}
+
+
+.header-inner {
+
+    width: 100%;
+
+    max-width: 1200px;
+
+    margin: 0 auto;
+
+    padding:
+        15px
+        28px;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: space-between;
+
+    gap: 25px;
+}
+
+
+/* ============================================================
+   BRAND
+   ============================================================ */
+
+.brand {
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 11px;
+
+    transition:
+        transform .2s ease;
+}
+
+
+.brand:hover {
+    transform: translateY(-1px);
+}
+
+
+.brand-mark {
+
+    width: 38px;
+
+    height: 38px;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    border:
+        2px solid
+        var(--yellow);
+
+    border-radius: 50%;
+
+    color: var(--yellow);
+
+    font-family: var(--mono-font);
+
+    font-size: .58rem;
+
+    font-weight: 600;
+}
+
+
+.brand-name {
+
+    font-family: var(--display-font);
+
+    font-size: 2rem;
+
+    font-weight: 700;
+
+    line-height: 1;
+}
+
+
+.brand-dot {
+    color: var(--yellow);
+}
+
+
+/* ============================================================
+   NAVIGATION
+   ============================================================ */
+
+.site-nav {
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    gap: 25px;
+}
+
+
+.site-nav a {
+
+    color: var(--muted);
+
+    font-size: .9rem;
+
+    transition:
+        color .2s ease,
+        transform .2s ease;
+}
+
+
+.site-nav a:hover {
+
+    color: var(--cream);
+
+    transform: translateY(-1px);
+}
+
+
+.nav-button {
+
+    padding:
+        9px
+        17px;
+
+    background: var(--yellow);
+
+    color: var(--green-dark) !important;
+
+    border-radius: 6px;
+
+    font-weight: 700 !important;
+}
+
+
+/* ============================================================
+   FLASH MESSAGES
+   ============================================================ */
+
+.flash-container {
+
+    width: 100%;
+
+    max-width: 760px;
+
+    margin:
+        20px auto;
+
+    padding:
+        0 24px;
+}
+
+
+.flash-message {
+
+    padding:
+        12px
+        17px;
+
+    background: var(--yellow);
+
+    color: var(--green-dark);
+
+    border-radius: 7px;
+
+    font-weight: 600;
+
+    box-shadow:
+        0 5px 0 rgba(0,0,0,.12);
+}
+
+
+/* ============================================================
+   LANDING PAGE
+   ============================================================ */
+
+.landing {
+
+    min-height:
+        calc(100vh - 69px);
+
+    width: 100%;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    text-align: center;
+
+    position: relative;
+
+    padding:
+        70px
+        25px
+        100px;
+}
+
+
+.landing-inner {
+
+    width: 100%;
+
+    max-width: 900px;
+
+    margin: 0 auto;
+
+    display: flex;
+
+    flex-direction: column;
+
+    align-items: center;
+
+    justify-content: center;
+}
+
+
+/* ============================================================
+   HERO TEXT
+   ============================================================ */
+
+.hero-eyebrow {
+
+    color: var(--yellow);
+
+    font-family: var(--mono-font);
+
+    font-size: .75rem;
+
+    text-transform: uppercase;
+
+    letter-spacing: 2px;
+
+    margin-bottom: 12px;
+
+    opacity: 0;
+
+    animation:
+        fadeUp .7s ease forwards;
+}
+
+
+.landing-title {
+
+    font-family: var(--display-font);
+
+    font-size:
+        clamp(
+            5rem,
+            11vw,
+            8.5rem
+        );
+
+    font-weight: 700;
+
+    line-height: .82;
+
+    margin:
+        0 0 25px;
+
+    text-align: center;
+
+    opacity: 0;
+
+    animation:
+        fadeUp .7s ease .12s forwards;
+}
+
+
+.landing-headline {
+
+    font-family: var(--display-font);
+
+    font-size:
+        clamp(
+            2.7rem,
+            6vw,
+            4.8rem
+        );
+
+    font-weight: 600;
+
+    line-height: .95;
+
+    text-align: center;
+
+    margin-bottom: 25px;
+
+    opacity: 0;
+
+    animation:
+        fadeUp .7s ease .24s forwards;
+}
+
+
+.landing-sub {
+
+    max-width: 590px;
+
+    margin:
+        0 auto 35px;
+
+    color: var(--muted);
+
+    font-size: 1.05rem;
+
+    text-align: center;
+
+    opacity: 0;
+
+    animation:
+        fadeUp .7s ease .36s forwards;
+}
+
+
+/* ============================================================
+   START BUTTON
+   ============================================================ */
+
+.start-button {
+
+    display: inline-flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    gap: 14px;
+
+    padding:
+        14px
+        24px;
+
+    background: var(--yellow);
+
+    color: var(--green-dark);
+
+    border-radius: 7px;
+
+    font-weight: 700;
+
+    transition:
+        transform .2s ease,
+        box-shadow .2s ease;
+
+    opacity: 0;
+
+    animation:
+        fadeUp .7s ease .48s forwards;
+}
+
+
+.start-button:hover {
+
+    transform:
+        translateY(-3px);
+
+    box-shadow:
+        0 7px 0 rgba(0,0,0,.15);
+}
+
+
+.button-arrow {
+    font-size: 1.15rem;
+}
+
+
+/* ============================================================
+   SCROLL INDICATOR
+   ============================================================ */
+
+.landing::after {
+
+    content: "↓";
+
+    position: absolute;
+
+    bottom: 25px;
+
+    left: 50%;
+
+    transform:
+        translateX(-50%);
+
+    color: var(--yellow);
+
+    font-family: var(--mono-font);
+
+    font-size: 1.1rem;
+
+    animation:
+        bounce 1.7s ease-in-out infinite;
+}
+
+
+/* ============================================================
+   ANIMATIONS
+   ============================================================ */
+
+@keyframes fadeUp {
+
+    from {
+
+        opacity: 0;
+
+        transform:
+            translateY(22px);
+    }
+
+    to {
+
+        opacity: 1;
+
+        transform:
+            translateY(0);
+    }
+}
+
+
+@keyframes bounce {
+
+    0%,
+    100% {
+
+        transform:
+            translate(-50%, 0);
+    }
+
+    50% {
+
+        transform:
+            translate(-50%, -8px);
+    }
+}
+
+
+/* ============================================================
+   SCHOOL DIRECTORY
+   ============================================================ */
+
+.school-section {
+
+    width: 100%;
+
+    max-width: 1150px;
+
+    margin: 0 auto;
+
+    padding:
+        110px
+        25px
+        120px;
+
+    scroll-margin-top: 80px;
+}
+
+
+/* ============================================================
+   SECTION HEADINGS
+   ============================================================ */
+
+.section-heading {
+
+    width: 100%;
+
+    max-width: 700px;
+
+    margin:
+        0 auto 35px;
+
+    text-align: center;
+}
+
+
+.section-kicker,
+.page-label {
+
+    color: var(--yellow);
+
+    font-family: var(--mono-font);
+
+    font-size: .72rem;
+
+    text-transform: uppercase;
+
+    letter-spacing: 2px;
+}
+
+
+.section-heading h2 {
+
+    margin:
+        8px 0 14px;
+
+    font-family: var(--display-font);
+
+    font-size: 4rem;
+
+    font-weight: 700;
+
+    line-height: .95;
+
+    text-align: center;
+}
+
+
+.section-heading p {
+
+    color: var(--muted);
+
+    text-align: center;
+}
+
+
+/* ============================================================
+   SEARCH
+   ============================================================ */
+
+.school-search {
+
+    width: 100%;
+
+    max-width: 700px;
+
+    margin:
+        0 auto 22px;
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 8px;
+
+    padding: 7px;
+
+    background:
+        rgba(247,242,230,.04);
+
+    border:
+        2px dashed
+        rgba(247,242,230,.25);
+
+    border-radius: 8px;
+}
+
+
+.school-search input {
+
+    flex: 1;
+
+    min-width: 0;
+
+    padding:
+        12px
+        14px;
+
+    border: none;
+
+    outline: none;
+
+    background: transparent;
+
+    color: var(--cream);
+
+    font-size: 1rem;
+}
+
+
+.school-search input::placeholder {
+    color: var(--muted);
+}
+
+
+.school-search button {
+
+    border: none;
+
+    padding:
+        11px
+        22px;
+
+    background: var(--yellow);
+
+    color: var(--green-dark);
+
+    border-radius: 5px;
+
+    font-weight: 700;
+}
+
+
+.clear-search {
+
+    padding:
+        8px
+        12px;
+
+    color: var(--muted);
+
+    font-size: .8rem;
+}
+
+
+/* ============================================================
+   FILTERS
+   ============================================================ */
+
+.school-filters {
+
+    width: 100%;
+
+    display: flex;
+
+    justify-content: center;
+
+    align-items: center;
+
+    flex-wrap: wrap;
+
+    gap: 9px;
+
+    margin:
+        0 auto 40px;
+}
+
+
+.school-filters a {
+
+    padding:
+        6px
+        13px;
+
+    border:
+        1px solid
+        rgba(247,242,230,.2);
+
+    border-radius: 100px;
+
+    color: var(--muted);
+
+    font-family: var(--mono-font);
+
+    font-size: .7rem;
+
+    transition:
+        .2s ease;
+}
+
+
+.school-filters a:hover,
+.school-filters a.active {
+
+    background: var(--yellow);
+
+    border-color: var(--yellow);
+
+    color: var(--green-dark);
+}
+
+
+/* ============================================================
+   RESULTS HEADER
+   ============================================================ */
+
+.results-heading {
+
+    width: 100%;
+
+    max-width: 1100px;
+
+    margin:
+        0 auto 20px;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: space-between;
+
+    gap: 15px;
+}
+
+
+.results-heading p {
+
+    color: var(--muted);
+}
+
+
+.results-heading strong {
+    color: var(--cream);
+}
+
+
+.results-heading span {
+
+    color: var(--muted);
+
+    font-family: var(--mono-font);
+
+    font-size: .72rem;
+}
+
+
+/* ============================================================
+   SCHOOL GRID
+   ============================================================ */
+
+.school-grid {
+
+    width: 100%;
+
+    display: grid;
+
+    grid-template-columns:
+        repeat(
+            auto-fill,
+            minmax(
+                250px,
+                1fr
+            )
+        );
+
+    gap: 18px;
+}
+
+
+.school-card {
+
+    min-height: 200px;
+
+    padding: 22px;
+
+    display: flex;
+
+    flex-direction: column;
+
+    justify-content: space-between;
+
+    background: var(--paper);
+
+    color: var(--text-dark);
+
+    border-radius: 7px;
+
+    box-shadow:
+        0 6px 0 rgba(0,0,0,.14);
+
+    transition:
+        transform .2s ease,
+        box-shadow .2s ease;
+}
+
+
+.school-card:hover {
+
+    transform:
+        translateY(-4px);
+
+    box-shadow:
+        0 10px 0 rgba(0,0,0,.14);
+}
+
+
+.school-card-top {
+
+    display: flex;
+
+    justify-content: space-between;
+
+    gap: 10px;
+}
+
+
+.school-type,
+.school-number {
+
+    color: var(--muted-dark);
+
+    font-family: var(--mono-font);
+
+    font-size: .65rem;
+
+    text-transform: uppercase;
+}
+
+
+.school-card h3 {
+
+    margin:
+        20px 0;
+
+    font-family: var(--display-font);
+
+    font-size: 1.75rem;
+
+    line-height: 1.05;
+}
+
+
+.school-link {
+
+    color: var(--red);
+
+    font-size: .85rem;
+
+    font-weight: 700;
+}
+
+
+/* ============================================================
+   SCHOOL PAGE
+   ============================================================ */
+
+.school-page {
+
+    width: 100%;
+
+    max-width: 1050px;
+
+    margin: 0 auto;
+
+    padding:
+        55px
+        25px
+        100px;
+}
+
+
+.school-page-header {
+
+    width: 100%;
+
+    max-width: 800px;
+
+    margin:
+        35px auto 40px;
+
+    text-align: center;
+}
+
+
+.school-page-header h1 {
+
+    margin:
+        7px 0 10px;
+
+    font-family: var(--display-font);
+
+    font-size:
+        clamp(
+            3rem,
+            7vw,
+            5rem
+        );
+
+    line-height: .95;
+
+    text-align: center;
+}
+
+
+.school-number-large {
+
+    color: var(--muted);
+
+    font-family: var(--mono-font);
+
+    font-size: .7rem;
+}
+
+
+.school-description {
+
+    max-width: 550px;
+
+    margin:
+        14px auto 0;
+
+    color: var(--muted);
+
+    text-align: center;
+}
+
+
+.back-link {
+
+    display: inline-block;
+
+    color: var(--muted);
+
+    font-size: .85rem;
+
+    transition:
+        color .2s ease;
+}
+
+
+.back-link:hover {
+    color: var(--cream);
+}
+
+
+/* ============================================================
+   TEACHER SEARCH
+   ============================================================ */
+
+.teacher-search-section {
+
+    width: 100%;
+
+    margin:
+        0 auto 40px;
+}
+
+
+/* ============================================================
+   TEACHER GRID
+   ============================================================ */
+
+.teacher-grid {
+
+    width: 100%;
+
+    display: grid;
+
+    grid-template-columns:
+        repeat(
+            auto-fill,
+            minmax(
+                250px,
+                1fr
+            )
+        );
+
+    gap: 18px;
+}
+
+
+.teacher-card {
+
+    position: relative;
+
+    min-height: 190px;
+
+    padding: 25px 20px 20px;
+
+    display: flex;
+
+    flex-direction: column;
+
+    justify-content: center;
+
+    background: var(--paper);
+
+    color: var(--text-dark);
+
+    border-radius: 7px;
+
+    box-shadow:
+        0 6px 0 rgba(0,0,0,.14);
+
+    transition:
+        transform .2s ease,
+        box-shadow .2s ease;
+}
+
+
+.teacher-card:hover {
+
+    transform:
+        translateY(-4px);
+
+    box-shadow:
+        0 10px 0 rgba(0,0,0,.14);
+}
+
+
+.teacher-name {
+
+    margin-bottom: 5px;
+
+    padding-right: 55px;
+
+    font-family: var(--display-font);
+
+    font-size: 1.8rem;
+
+    line-height: 1;
+}
+
+
+.teacher-subject {
+
+    margin-bottom: 14px;
+
+    color: var(--muted-dark);
+
+    font-family: var(--mono-font);
+
+    font-size: .7rem;
+
+    text-transform: uppercase;
+}
+
+
+.teacher-rating {
+
+    color: var(--text-dark);
+
+    font-size: .85rem;
+}
+
+
+.teacher-rating span {
+
+    color: var(--muted-dark);
+
+    font-size: .78rem;
+}
+
+
+.teacher-no-reviews {
+
+    color: var(--muted-dark);
+
+    font-size: .8rem;
+}
+
+
+.teacher-card-link {
+
+    margin-top: auto;
+
+    padding-top: 15px;
+
+    color: var(--red);
+
+    font-size: .82rem;
+
+    font-weight: 700;
+}
+
+
+/* ============================================================
+   GRADE STAMP
+   ============================================================ */
+
+.grade-stamp {
+
+    position: absolute;
+
+    top: 14px;
+
+    right: 14px;
+
+    width: 48px;
+
+    height: 48px;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    border:
+        3px solid
+        currentColor;
+
+    border-radius: 50%;
+
+    font-family: var(--display-font);
+
+    font-size: 1.45rem;
+
+    font-weight: 700;
+
+    transform:
+        rotate(-8deg);
+}
+
+
+.grade-A {
+    color: #4d936f;
+}
+
+
+.grade-B {
+    color: #719d59;
+}
+
+
+.grade-C {
+    color: var(--yellow);
+}
+
+
+.grade-D {
+    color: #d18c40;
+}
+
+
+.grade-F {
+    color: var(--red);
+}
+
+
+.grade-NA {
+
+    color: #87958e;
+
+    font-size: .85rem;
+}
+
+
+/* ============================================================
+   TEACHER PROFILE
+   ============================================================ */
+
+.teacher-page {
+
+    width: 100%;
+
+    max-width: 1050px;
+
+    margin: 0 auto;
+
+    padding:
+        55px
+        25px
+        100px;
+}
+
+
+.teacher-profile-header {
+
+    width: 100%;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: space-between;
+
+    gap: 30px;
+
+    padding:
+        40px 0;
+}
+
+
+.teacher-profile-info {
+
+    flex: 1;
+
+    text-align: left;
+}
+
+
+.teacher-profile-info h1 {
+
+    margin:
+        8px 0;
+
+    font-family: var(--display-font);
+
+    font-size:
+        clamp(
+            3rem,
+            7vw,
+            5rem
+        );
+
+    line-height: .9;
+}
+
+
+.teacher-profile-subject {
+
+    color: var(--yellow);
+
+    font-family: var(--mono-font);
+
+    font-size: .8rem;
+
+    text-transform: uppercase;
+}
+
+
+.teacher-profile-rating {
+
+    min-width: 150px;
+
+    text-align: center;
+}
+
+
+.large-grade {
+
+    font-family: var(--display-font);
+
+    font-size: 5rem;
+
+    line-height: 1;
+
+    color: var(--yellow);
+}
+
+
+.large-rating {
+
+    font-family: var(--display-font);
+
+    font-size: 2rem;
+}
+
+
+.rating-count {
+
+    color: var(--muted);
+
+    font-family: var(--mono-font);
+
+    font-size: .7rem;
+}
+
+
+.no-rating-large {
+
+    color: var(--muted);
+
+    font-family: var(--mono-font);
+
+    font-size: .8rem;
+}
+
+
+/* ============================================================
+   TEACHER ACTIONS
+   ============================================================ */
+
+.teacher-actions {
+
+    width: 100%;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    gap: 12px;
+
+    margin:
+        0 auto 55px;
+}
+
+
+.button {
+
+    display: inline-flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    padding:
+        12px
+        20px;
+
+    border-radius: 6px;
+
+    font-weight: 700;
+
+    transition:
+        transform .2s ease;
+}
+
+
+.button:hover {
+
+    transform:
+        translateY(-2px);
+}
+
+
+.button-primary {
+
+    background: var(--yellow);
+
+    color: var(--green-dark);
+}
+
+
+.button-secondary {
+
+    border:
+        1px solid
+        rgba(247,242,230,.25);
+
+    color: var(--muted);
+}
+
+
+/* ============================================================
+   RATING SECTION
+   ============================================================ */
+
+.rating-section,
+.reviews-section {
+
+    width: 100%;
+
+    margin-bottom: 65px;
+}
+
+
+.rating-grid {
+
+    width: 100%;
+
+    display: grid;
+
+    grid-template-columns:
+        repeat(
+            3,
+            1fr
+        );
+
+    gap: 15px;
+}
+
+
+.rating-box {
+
+    padding:
+        22px;
+
+    background:
+        rgba(247,242,230,.055);
+
+    border:
+        1px solid
+        rgba(247,242,230,.12);
+
+    border-radius: 7px;
+
+    text-align: center;
+}
+
+
+.rating-box-label {
+
+    display: block;
+
+    margin-bottom: 7px;
+
+    color: var(--muted);
+
+    font-family: var(--mono-font);
+
+    font-size: .7rem;
+
+    text-transform: uppercase;
+}
+
+
+.rating-box strong {
+
+    font-family: var(--display-font);
+
+    font-size: 2.2rem;
+}
+
+
+/* ============================================================
+   REVIEWS
+   ============================================================ */
+
+.reviews-list {
+
+    display: flex;
+
+    flex-direction: column;
+
+    gap: 18px;
+}
+
+
+.review-card {
+
+    padding:
+        23px;
+
+    background: var(--paper);
+
+    color: var(--text-dark);
+
+    border-radius: 7px;
+
+    box-shadow:
+        0 5px 0 rgba(0,0,0,.12);
+}
+
+
+.review-header {
+
+    display: flex;
+
+    align-items: flex-start;
+
+    justify-content: space-between;
+
+    gap: 15px;
+}
+
+
+.review-label {
+
+    display: block;
+
+    color: var(--muted-dark);
+
+    font-family: var(--mono-font);
+
+    font-size: .68rem;
+
+    text-transform: uppercase;
+}
+
+
+.review-rating {
+
+    color: var(--red);
+
+    font-family: var(--display-font);
+
+    font-size: 2rem;
+}
+
+
+.review-date {
+
+    color: var(--muted-dark);
+
+    font-family: var(--mono-font);
+
+    font-size: .65rem;
+}
+
+
+.review-details {
+
+    display: grid;
+
+    grid-template-columns:
+        repeat(
+            5,
+            1fr
+        );
+
+    gap: 10px;
+
+    margin:
+        18px 0;
+
+    padding:
+        15px 0;
+
+    border-top:
+        1px solid
+        var(--cream-dark);
+
+    border-bottom:
+        1px solid
+        var(--cream-dark);
+}
+
+
+.review-details div {
+
+    text-align: center;
+}
+
+
+.review-details span {
+
+    display: block;
+
+    color: var(--muted-dark);
+
+    font-size: .65rem;
+}
+
+
+.review-details strong {
+
+    font-family: var(--mono-font);
+
+    font-size: .75rem;
+}
+
+
+.review-comment p {
+
+    color: #3c403b;
+
+    font-size: .95rem;
+}
+
+
+/* ============================================================
+   EMPTY STATE
+   ============================================================ */
+
+.empty-state {
+
+    width: 100%;
+
+    padding:
+        65px 25px;
+
+    text-align: center;
+
+    color: var(--muted);
+}
+
+
+.empty-state h3 {
+
+    margin-bottom: 8px;
+
+    color: var(--cream);
+
+    font-family: var(--display-font);
+
+    font-size: 2rem;
+}
+
+
+.empty-state p {
+
+    max-width: 500px;
+
+    margin:
+        0 auto 20px;
+}
+
+
+.empty-state a {
+
+    color: var(--yellow);
+
+    font-weight: 700;
+}
+
+
+/* ============================================================
+   FORMS
+   ============================================================ */
+
+.form-page {
+
+    width: 100%;
+
+    max-width: 700px;
+
+    margin:
+        0 auto;
+
+    padding:
+        55px 25px 100px;
+}
+
+
+.form-page h1 {
+
+    margin:
+        35px 0 10px;
+
+    font-family: var(--display-font);
+
+    font-size: 4rem;
+
+    line-height: .95;
+
+    text-align: center;
+}
+
+
+.form-sub {
+
+    margin-bottom: 35px;
+
+    color: var(--muted);
+
+    text-align: center;
+}
+
+
+.paper-form {
+
+    width: 100%;
+
+    padding:
+        30px;
+
+    display: flex;
+
+    flex-direction: column;
+
+    gap: 8px;
+
+    background: var(--paper);
+
+    color: var(--text-dark);
+
+    border-radius: 8px;
+
+    box-shadow:
+        0 7px 0 rgba(0,0,0,.14);
+}
+
+
+.paper-form > label {
+
+    margin-top: 10px;
+
+    font-size: .85rem;
+
+    font-weight: 700;
+}
+
+
+.paper-form input[type="text"],
+.paper-form input[type="search"],
+.paper-form select,
+.paper-form textarea {
+
+    width: 100%;
+
+    padding:
+        11px
+        12px;
+
+    border:
+        1px solid
+        var(--cream-dark);
+
+    border-radius: 5px;
+
+    outline: none;
+
+    background: #fffefa;
+
+    color: var(--text-dark);
+
+    font-size: .95rem;
+}
+
+
+.paper-form input:focus,
+.paper-form select:focus,
+.paper-form textarea:focus {
+
+    border-color:
+        var(--red);
+}
+
+
+.paper-form textarea {
+
+    min-height: 140px;
+
+    resize: vertical;
+}
+
+
+/* ============================================================
+   RATING FORM
+   ============================================================ */
+
+.rating-group {
+
+    border: none;
+
+    border-top:
+        1px dashed
+        var(--cream-dark);
+
+    padding:
+        16px 0 0;
+
+    margin-top: 10px;
+}
+
+
+.rating-group legend {
+
+    margin-bottom: 10px;
+
+    font-size: .85rem;
+
+    font-weight: 700;
+}
+
+
+.rating-scale {
+
+    display: flex;
+
+    gap: 10px;
+}
+
+
+.rating-option {
+
+    position: relative;
+
+    cursor: pointer;
+}
+
+
+.rating-option input {
+
+    position: absolute;
+
+    opacity: 0;
+}
+
+
+.rating-option span {
+
+    width: 40px;
+
+    height: 40px;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    border:
+        2px solid
+        var(--cream-dark);
+
+    border-radius: 50%;
+
+    color: var(--muted-dark);
+
+    font-family: var(--mono-font);
+
+    font-size: .8rem;
+
+    transition:
+        .15s ease;
+}
+
+
+.rating-option input:checked + span {
+
+    border-color:
+        var(--red);
+
+    background:
+        rgba(180,60,49,.08);
+
+    color:
+        var(--red);
+}
+
+
+.paper-form .button-primary {
+
+    align-self: flex-start;
+
+    margin-top: 20px;
+
+    border: none;
+}
+
+
+/* ============================================================
+   HONEYPOT
+   ============================================================ */
+
+.honeypot-field {
+
+    position: absolute;
+
+    left: -9999px;
+
+    width: 1px;
+
+    height: 1px;
+
+    overflow: hidden;
+}
+
+
+/* ============================================================
+   FOOTER
+   ============================================================ */
+
+.site-footer {
+
+    width: 100%;
+
+    border-top:
+        1px dashed
+        rgba(247,242,230,.18);
+}
+
+
+.footer-inner {
+
+    max-width: 1200px;
+
+    margin: 0 auto;
+
+    padding:
+        35px
+        25px
+        45px;
+
+    text-align: center;
+}
+
+
+.footer-inner p {
+
+    color: var(--muted);
+
+    font-family: var(--mono-font);
+
+    font-size: .7rem;
+}
+
+
+.footer-inner span {
+
+    margin:
+        0 6px;
+
+    color: var(--yellow);
+}
+
+
+/* ============================================================
+   ACCESSIBILITY
+   ============================================================ */
+
+a:focus-visible,
+button:focus-visible,
+input:focus-visible,
+textarea:focus-visible,
+select:focus-visible {
+
+    outline:
+        2px solid
+        var(--yellow);
+
+    outline-offset: 3px;
+}
+
+
+/* ============================================================
+   MOBILE
+   ============================================================ */
+
+@media (max-width: 750px) {
+
+
+    /* HEADER */
+
+    .header-inner {
+
+        padding:
+            13px
+            18px;
+    }
+
+
+    .brand-name {
+
+        font-size: 1.65rem;
+    }
+
+
+    .brand-mark {
+
+        width: 33px;
+
+        height: 33px;
+    }
+
+
+    .site-nav {
+
+        gap: 10px;
+    }
+
+
+    .site-nav > a:first-child {
+
+        display: none;
+    }
+
+
+    .nav-button {
+
+        padding:
+            8px
+            11px;
+
+        font-size: .75rem;
+    }
+
+
+    /* LANDING */
+
+    .landing {
+
+        min-height:
+            calc(100vh - 60px);
+
+        padding:
+            50px
+            20px
+            90px;
+    }
+
+
+    .landing-title {
+
+        font-size: 4.8rem;
+    }
+
+
+    .landing-headline {
+
+        font-size: 2.8rem;
+    }
+
+
+    .landing-sub {
+
+        font-size: .95rem;
+    }
+
+
+    /* SCHOOL */
+
+    .school-section {
+
+        padding:
+            80px
+            18px
+            90px;
+    }
+
+
+    .section-heading h2 {
+
+        font-size: 3.2rem;
+    }
+
+
+    .school-search {
+
+        flex-direction: column;
+
+        padding: 8px;
+    }
+
+
+    .school-search input {
+
+        width: 100%;
+
+        text-align: center;
+    }
+
+
+    .school-search button {
+
+        width: 100%;
+    }
+
+
+    .results-heading {
+
+        flex-direction: column;
+
+        align-items: center;
+
+        text-align: center;
+    }
+
+
+    .school-grid,
+    .teacher-grid {
+
+        grid-template-columns:
+            1fr;
+    }
+
+
+    /* SCHOOL PAGE */
+
+    .school-page {
+
+        padding:
+            40px
+            18px
+            80px;
+    }
+
+
+    .school-page-header h1 {
+
+        font-size: 3.2rem;
+    }
+
+
+    /* TEACHER */
+
+    .teacher-page {
+
+        padding:
+            40px
+            18px
+            80px;
+    }
+
+
+    .teacher-profile-header {
+
+        flex-direction: column;
+
+        text-align: center;
+    }
+
+
+    .teacher-profile-info {
+
+        text-align: center;
+    }
+
+
+    .teacher-profile-info h1 {
+
+        font-size: 3.5rem;
+    }
+
+
+    .teacher-actions {
+
+        flex-direction: column;
+    }
+
+
+    .teacher-actions .button {
+
+        width: 100%;
+    }
+
+
+    /* RATINGS */
+
+    .rating-grid {
+
+        grid-template-columns:
+            1fr;
+    }
+
+
+    .review-details {
+
+        grid-template-columns:
+            repeat(
+                2,
+                1fr
+            );
+    }
+
+
+    /* FORMS */
+
+    .form-page {
+
+        padding:
+            40px
+            18px
+            80px;
+    }
+
+
+    .form-page h1 {
+
+        font-size: 3.2rem;
+    }
+
+
+    .paper-form {
+
+        padding:
+            22px;
+    }
+
+
+}
+
+
+/* ============================================================
+   REDUCED MOTION
+   ============================================================ */
+
+@media (prefers-reduced-motion: reduce) {
+
+    html {
+        scroll-behavior: auto;
+    }
+
+
+    *,
+    *::before,
+    *::after {
+
+        animation: none !important;
+
+        transition: none !important;
+    }
+
+}

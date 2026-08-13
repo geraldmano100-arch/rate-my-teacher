@@ -1,0 +1,276 @@
+{% extends "base.html" %}
+
+{% block title %}Review {{ teacher.name }} | Rate My Teacher{% endblock %}
+
+{% block content %}
+
+<section class="form-page">
+
+    <div class="form-container review-form-container">
+
+        <div class="form-header">
+
+            <p class="page-label">
+                Student review
+            </p>
+
+            <h1>Review {{ teacher.name }}</h1>
+
+            <p>
+                {{ teacher.subject }}
+            </p>
+
+            <p class="form-note">
+                Your review is anonymous. Please be honest
+                and respectful.
+            </p>
+
+        </div>
+
+
+        <form
+            method="POST"
+            action="{{ url_for(
+                'add_review',
+                teacher_id=teacher.id
+            ) }}"
+            class="main-form"
+        >
+
+            <!-- Honeypot spam protection -->
+            <div class="honeypot">
+                <label for="website">
+                    Website
+                </label>
+
+                <input
+                    type="text"
+                    id="website"
+                    name="website"
+                    tabindex="-1"
+                    autocomplete="off"
+                >
+            </div>
+
+
+            <!-- Overall -->
+            <div class="form-group">
+
+                <label for="overall_rating">
+                    Overall rating
+                </label>
+
+                <select
+                    id="overall_rating"
+                    name="overall_rating"
+                    required
+                >
+                    <option value="">
+                        Select a rating
+                    </option>
+
+                    <option value="5">
+                        5 — Excellent
+                    </option>
+
+                    <option value="4">
+                        4 — Good
+                    </option>
+
+                    <option value="3">
+                        3 — Average
+                    </option>
+
+                    <option value="2">
+                        2 — Below average
+                    </option>
+
+                    <option value="1">
+                        1 — Poor
+                    </option>
+                </select>
+
+            </div>
+
+
+            <!-- Difficulty -->
+            <div class="form-group">
+
+                <label for="difficulty">
+                    Class difficulty
+                </label>
+
+                <select
+                    id="difficulty"
+                    name="difficulty"
+                    required
+                >
+                    <option value="">
+                        Select a rating
+                    </option>
+
+                    <option value="1">1 — Very easy</option>
+                    <option value="2">2 — Easy</option>
+                    <option value="3">3 — Moderate</option>
+                    <option value="4">4 — Difficult</option>
+                    <option value="5">5 — Very difficult</option>
+                </select>
+
+            </div>
+
+
+            <!-- Workload -->
+            <div class="form-group">
+
+                <label for="workload">
+                    Workload
+                </label>
+
+                <select
+                    id="workload"
+                    name="workload"
+                    required
+                >
+                    <option value="">
+                        Select a rating
+                    </option>
+
+                    <option value="1">1 — Very light</option>
+                    <option value="2">2 — Light</option>
+                    <option value="3">3 — Moderate</option>
+                    <option value="4">4 — Heavy</option>
+                    <option value="5">5 — Very heavy</option>
+                </select>
+
+            </div>
+
+
+            <!-- Clarity -->
+            <div class="form-group">
+
+                <label for="clarity">
+                    How clearly does the teacher explain?
+                </label>
+
+                <select
+                    id="clarity"
+                    name="clarity"
+                    required
+                >
+                    <option value="">
+                        Select a rating
+                    </option>
+
+                    <option value="1">1 — Very unclear</option>
+                    <option value="2">2 — Unclear</option>
+                    <option value="3">3 — Average</option>
+                    <option value="4">4 — Clear</option>
+                    <option value="5">5 — Very clear</option>
+                </select>
+
+            </div>
+
+
+            <!-- Test difficulty -->
+            <div class="form-group">
+
+                <label for="test_difficulty">
+                    Test difficulty
+                </label>
+
+                <select
+                    id="test_difficulty"
+                    name="test_difficulty"
+                    required
+                >
+                    <option value="">
+                        Select a rating
+                    </option>
+
+                    <option value="1">1 — Very easy</option>
+                    <option value="2">2 — Easy</option>
+                    <option value="3">3 — Moderate</option>
+                    <option value="4">4 — Difficult</option>
+                    <option value="5">5 — Very difficult</option>
+                </select>
+
+            </div>
+
+
+            <!-- Participation -->
+            <div class="form-group">
+
+                <label for="participation">
+                    Participation required
+                </label>
+
+                <select
+                    id="participation"
+                    name="participation"
+                    required
+                >
+                    <option value="">
+                        Select a rating
+                    </option>
+
+                    <option value="1">1 — Very little</option>
+                    <option value="2">2 — Little</option>
+                    <option value="3">3 — Moderate</option>
+                    <option value="4">4 — A lot</option>
+                    <option value="5">5 — Very high</option>
+                </select>
+
+            </div>
+
+
+            <!-- Comment -->
+            <div class="form-group">
+
+                <label for="comment">
+                    Review
+                </label>
+
+                <textarea
+                    id="comment"
+                    name="comment"
+                    rows="6"
+                    maxlength="1000"
+                    placeholder="What should other students know about this class?"
+                ></textarea>
+
+                <small>
+                    Keep your review respectful and avoid
+                    sharing personal information.
+                </small>
+
+            </div>
+
+
+            <div class="form-actions">
+
+                <button
+                    type="submit"
+                    class="button button-primary"
+                >
+                    Submit review
+                </button>
+
+                <a
+                    href="{{ url_for(
+                        'teacher_detail',
+                        teacher_id=teacher.id
+                    ) }}"
+                    class="button button-secondary"
+                >
+                    Cancel
+                </a>
+
+            </div>
+
+        </form>
+
+    </div>
+
+</section>
+
+{% endblock %}
